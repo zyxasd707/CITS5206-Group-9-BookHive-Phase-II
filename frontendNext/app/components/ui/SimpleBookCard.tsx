@@ -1,0 +1,26 @@
+import React from "react";
+// 引入类型 
+import type { Book } from "@/app/types/book";
+import CoverImg from "../ui/CoverImg";
+import Card from "./Card";
+
+interface SimpleBookCardProps {
+  book: Book;
+}
+
+// 简单的图书卡片组件
+export default function SimpleBookCard({ book }: SimpleBookCardProps) {
+  return (
+    <Card className="flex-shrink-0 w-[clamp(180px,20vw,240px)] hover:shadow-lg transition-shadow">
+      <div className="w-full aspect-[3/4] bg-gray-200 rounded-lg overflow-hidden mb-3">
+        {/* cover img */}
+        <CoverImg src={book.coverImgUrl} title={book.titleOr} />
+      </div>
+      <div className="px-2 pb-2">
+        <h4 className="text-base font-medium text-gray-900 line-clamp-2 leading-snug">
+          {book.titleOr}
+        </h4>
+      </div>
+    </Card>
+  );
+}
